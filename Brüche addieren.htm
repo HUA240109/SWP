@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <title>Brüche addieren</title>
+        <link rel="stylesheet" href="../styles/main.css">
+    </head>
+    <body>
+        <script>
+
+            let z1 = prompt("Geben Sie den Zähler des ersten Bruchs ein:");
+            let n1 = prompt("Geben Sie den Nenner des ersten Bruchs ein:");
+            let z2 = prompt("Geben Sie den Zähler des zweiten Bruchs ein:");
+            let n2 = prompt("Geben Sie den Nenner des zweiten Bruchs ein:");
+
+            z1 = Number(z1);
+            n1 = Number(n1);
+            z2 = Number(z2);
+            n2 = Number(n2);
+
+            function erstelleBruch(zaehler, nenner) {
+                if (typeof zaehler !== "number" || typeof nenner !== "number" || isNaN(zaehler) || isNaN(nenner)) {
+                    throw new Error("Bitte nur Zahlen eingeben.");
+                }
+                if (nenner === 0) {
+                    throw new Error("Nenner darf nicht 0 sein.");
+                }
+                return { zaehler: zaehler, nenner: nenner };
+            }
+
+            function addiereBrueche(b1, b2) {
+                if (!b1 || !b2 || typeof b1.zaehler !== "number" || typeof b1.nenner !== "number" ||
+                    typeof b2.zaehler !== "number" || typeof b2.nenner !== "number") {
+                    throw new Error("Parameter müssen Brüche sein!");
+                }
+                const neuerZaehler = b1.zaehler * b2.nenner + b2.zaehler * b1.nenner;
+                const neuerNenner = b1.nenner * b2.nenner;
+                return kuerzeBruch({ zaehler: neuerZaehler, nenner: neuerNenner });
+            }
+
+            function kuerzeBruch(bruch) {
+                const ggt = berechneGGT(Math.abs(bruch.zaehler), Math.abs(bruch.nenner));
+                return {
+                    zaehler: bruch.zaehler / ggt,
+                    nenner: bruch.nenner / ggt
+                };
+            }
+
+          
+            function berechneGGT(a, b) {
+                while (b !== 0) {
+                    const temp = b;
+                    b = a % b;
+                    a = temp;
+                }
+                return a;
+            }
+
+            function bruchZuGemischteZahl(bruch) {
+                const ganz = Math.trunc(bruch.zaehler / bruch.nenner);
+                const rest = Math.abs(bruch.zaehler % bruch.nenner);
+                if (rest === 0) {
+                    return `${ganz}`;
+                } else if (ganz === 0) {
+                    return `${bruch.zaehler}/${bruch.nenner}`;
+                } else {
+                    return `${ganz} ${rest}/${bruch.nenner}`;
+                }
+            }
+
+            function bruchZuString(bruch) {
+                return `${bruch.zaehler}/${bruch.nenner}`;
+            }
+
+            if (
+                isNaN(z1) || isNaN(n1) || isNaN(z2) || isNaN(n2) ||
+                n1 === 0 || n2 === 0
+            ) {
+                alert("Bitte nur gültige Zahlen und Nenner darf nicht 0 sein!");
+            } else {
+                const bruch1 = erstelleBruch(z1, n1);
+                const bruch2 = erstelleBruch(z2, n2);
+                const summe = addiereBrueche(bruch1, bruch2);
+                alert(
+                bruchZuString(bruch1) + " + " + bruchZuString(bruch2) + " = " + bruchZuGemischteZahl(summe)
+                );
+            }
+        </script>
+    </body>
+</html>
