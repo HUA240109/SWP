@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HTML Elemente - Beispiele </title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.5; padding: 20px; max-width: 900px; }
+        section { margin-bottom: 1.2rem; }
+        h2 { margin: 0 0 0.4rem 0; font-size: 1.05rem; }
+        code { background:#f3f3f3; padding:0.1rem 0.3rem; border-radius:3px; }
+        .row { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
+        canvas { border:1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Beispiele: nützliche HTML-Elemente</h1>
+
+    <section>
+        <h2>details + summary</h2>
+        <details>
+            <summary>Mehr anzeigen</summary>
+            <p>Hier steht zusätzlicher Inhalt, der auf- und zugeklappt werden kann.</p>
+        </details>
+    </section>
+
+    <section>
+        <h2>canvas</h2>
+        <div class="row">
+            <canvas id="meinCanvas" width="200" height="120" aria-label="Zeichenfläche"></canvas>
+            <div>Einfaches Rechteck und Text auf dem Canvas.</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>dialog</h2>
+        <div class="row">
+            <button id="openDialog">Dialog öffnen</button>
+            <dialog id="dlg">
+                <p>Das ist ein Dialogfenster.</p>
+                <menu>
+                    <button id="closeDialog">Schließen</button>
+                </menu>
+            </dialog>
+        </div>
+    </section>
+
+    <section>
+        <h2>mark</h2>
+        <p>Dieser Text enthält ein <mark>markiertes Wort</mark>, z. B. zur Hervorhebung.</p>
+    </section>
+
+    <section>
+        <h2>output (Berechnung)</h2>
+        <div class="row">
+            <input id="a" type="number" value="3" /> +
+            <input id="b" type="number" value="5" />
+            = <output id="sum">8</output>
+            <button id="calc">Berechnen</button>
+        </div>
+    </section>
+
+    <section>
+        <h2>progress &amp; meter</h2>
+        <div class="row">
+            <progress id="prog" value="30" max="100" style="width:200px"></progress>
+            <button id="incProg">+10%</button>
+            <meter value="0.7">70%</meter>
+        </div>
+    </section>
+
+    <section>
+        <h2>time</h2>
+        <p>Maschinenlesbar: <time datetime="2025-11-10">10. November 2025</time></p>
+    </section>
+
+    <section>
+        <h2>abbr</h2>
+        <p><abbr title="Hypertext Markup Language">HTML</abbr> ist eine Auszeichnungssprache.</p>
+    </section>
+
+    <section>
+        <h2>kbd</h2>
+        <p>Drücke <kbd>Strg</kbd> + <kbd>C</kbd>, um zu kopieren.</p>
+    </section>
+
+    <section>
+        <h2>code &amp; samp</h2>
+        <pre><code>console.log('Hallo Welt');</code></pre>
+        <p>Beispielausgabe: <samp>Hallo Welt</samp></p>
+    </section>
+
+    <section>
+        <h2>ruby</h2>
+        <p><ruby>漢字<rt>kanji</rt></ruby> — Beispiel mit Aussprache (rt).</p>
+    </section>
+
+    <section>
+        <h2>wbr</h2>
+        <p>LangesWort<wbr>MitTrennstelle: dieses Element erlaubt einen Zeilenumbruch an dieser Stelle.</p>
+    </section>
+
+    <section>
+        <h2>fieldset &amp; legend</h2>
+        <form>
+            <fieldset>
+                <legend>Kontakt</legend>
+                <label>Name: <input type="text" name="name"></label><br>
+                <label>Email: <input type="email" name="email"></label>
+            </fieldset>
+        </form>
+    </section>
+
+    <section>
+        <h2>picture &amp; source</h2>
+        <picture>
+            <source srcset="https://via.placeholder.com/300.webp" type="image/webp">
+            <source srcset="https://via.placeholder.com/300.jpg" type="image/jpeg">
+            <img src="https://via.placeholder.com/300.jpg" alt="Platzhalterbild" width="300">
+        </picture>
+    </section>
+
+    <script>
+        const c = document.getElementById('meinCanvas');
+        const ctx = c.getContext('2d');
+        ctx.fillStyle = '#e0f7fa';
+        ctx.fillRect(0, 0, c.width, c.height);
+        ctx.fillStyle = '#006064';
+        ctx.fillRect(20, 20, 160, 60);
+        ctx.fillStyle = '#fff';
+        ctx.font = '16px sans-serif';
+        ctx.fillText('Canvas Beispiel', 30, 55);
+
+        const dlg = document.getElementById('dlg');
+        document.getElementById('openDialog').addEventListener('click', () => {
+            if (typeof dlg.showModal === 'function') dlg.showModal();
+            else alert('Ihr Browser unterstützt <dialog> nicht.');
+        });
+        document.getElementById('closeDialog').addEventListener('click', () => dlg.close());
+
+        const inpA = document.getElementById('a');
+        const inpB = document.getElementById('b');
+        const out = document.getElementById('sum');
+        document.getElementById('calc').addEventListener('click', () => {
+            const sa = Number(inpA.value) || 0;
+            const sb = Number(inpB.value) || 0;
+            out.value = sa + sb;
+        });
+
+        const prog = document.getElementById('prog');
+        document.getElementById('incProg').addEventListener('click', () => {
+            prog.value = Math.min(prog.max, Number(prog.value) + 10);
+        });
+    </script>
+</body>
+</html>
