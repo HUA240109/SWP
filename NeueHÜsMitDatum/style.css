@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #87CEEB 0%, #ffffff 100%);
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    color: #4DA6D6;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+    color: #4DA6D6;
+    margin: 20px 0 15px 0;
+    font-size: 1.3em;
+}
+
+/* Input Felder */
+input {
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    margin: 10px 10px 20px 0;
+    transition: all 0.3s;
+    width: 200px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #4DA6D6;
+    box-shadow: 0 0 0 3px rgba(77, 166, 214, 0.1);
+}
+
+/* Button */
+button {
+    padding: 12px 35px;
+    background: linear-gradient(135deg, #87CEEB 0%, #4DA6D6 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(77, 166, 214, 0.4);
+    margin-bottom: 20px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(77, 166, 214, 0.6);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Tabelle */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+thead {
+    background: linear-gradient(135deg, #87CEEB 0%, #4DA6D6 100%);
+    color: white;
+    font-weight: 600;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 1em;
+}
+
+thead td {
+    border-bottom: none;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f0f8ff;
+}
+
+tbody tr:hover {
+    background-color: #e0f6ff;
+    transition: background-color 0.2s;
+}
+
+/* Layout */
+.content-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+section {
+    background: #f8fbff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #e0f0ff;
+}
+
+section h2 {
+    margin-top: 0;
+}
+
+canvas {
+    width: 100%;
+    height: auto;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .content-row {
+        grid-template-columns: 1fr;
+    }
+    
+    input {
+        width: 150px;
+    }
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    input {
+        width: 100%;
+        margin-right: 0;
+    }
+    
+    button {
+        width: 100%;
+    }
+}
