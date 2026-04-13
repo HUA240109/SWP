@@ -1,6 +1,4 @@
-import { holeEssen, loescheEssen } from "./essen.ts"; // so ists ideal
-// import * as essensfunctions from "./essen.ts";  -> neues Objekt mit essensfunctions.holeEssen
-// import "./essen.ts"; --> es wird nur das Modul ausgeführt, aber keine Funktionen importiert
+import { holeEssen, loescheEssen } from "./essen.ts";
 
 type EssenGlobals = typeof globalThis & {
     holeEssen: typeof holeEssen;
@@ -12,8 +10,19 @@ const globals = globalThis as EssenGlobals;
 globals.holeEssen = holeEssen;
 globals.loescheEssen = loescheEssen;
 
-document.getElementById("hole-essen")?.addEventListener("click", holeEssen);
-document.getElementById("loesche-essen")?.addEventListener(
-    "click",
-    loescheEssen,
-);
+const infoElement = document.getElementById("info");
+
+function updateInfo(duration: number) {
+    if (infoElement) {
+        infoElement.textContent = `Fetch-Dauer: ${(duration)}ms`;
+    }
+}
+
+async function startFetch() {
+    const start = Date.now();
+    await holeEssen();
+    updateInfo(Date.now() - start);
+}
+
+document.getElementById("hole-essen")?.addEventListener("click", startFetch);
+document.getElementById("loesche-essen")?.addEventListener("click", loescheEssen);
