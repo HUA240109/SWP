@@ -1,0 +1,1 @@
+https://keyserver.ubuntu.com/pks/lookup?search=hua240109%40spengergasse.at&fingerprint=on&op=index
