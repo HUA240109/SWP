@@ -1,4 +1,5 @@
 import { holeEssen, loescheEssen } from "./essen.ts";
+import ms from "ms";
 
 type EssenGlobals = typeof globalThis & {
     holeEssen: typeof holeEssen;
@@ -14,7 +15,8 @@ const infoElement = document.getElementById("info");
 
 function updateInfo(duration: number) {
     if (infoElement) {
-        infoElement.textContent = `Fetch-Dauer: ${(duration)}ms`;
+        const formattedTime = ms(duration);
+        infoElement.textContent = `Fetch-Dauer: ${formattedTime}`;
     }
 }
 

@@ -1,0 +1,13 @@
+{
+  "tasks": {
+    "demo": "deno run -A example.ts",
+    "interactive": "deno run -A example.ts --interactive",
+    "dev": "deno run -A --watch example.ts"
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1"
+  },
+  "fmt": {
+    "indentWidth": 2
+  }
+}

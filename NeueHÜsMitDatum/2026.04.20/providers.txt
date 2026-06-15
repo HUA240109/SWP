@@ -1,0 +1,51 @@
+Freie KI-Provider und öffentlich zugängliche APIs:
+
+1. OpenAI (Freemium)
+   - Name: openai
+   - Basis-URL: https://api.openai.com/v1
+   - Modelle: gpt-3.5-turbo, gpt-4 (begrenzte kostenlose Credits)
+   - Dokumentation: https://platform.openai.com/docs
+
+2. Anthropic Claude (Freemium)
+   - Name: anthropic
+   - Basis-URL: https://api.anthropic.com
+   - Modelle: claude-3-opus, claude-3-sonnet, claude-3-haiku
+   - Dokumentation: https://docs.anthropic.com
+
+3. Google Generative AI (Gemini) - Kostenlos
+   - Name: google-generative-ai
+   - Basis-URL: https://generativelanguage.googleapis.com
+   - Modelle: gemini-pro, gemini-pro-vision
+   - Dokumentation: https://ai.google.dev
+
+4. Hugging Face - Kostenlos
+   - Name: huggingface
+   - Basis-URL: https://api-inference.huggingface.co
+   - Modelle: Verschiedene open-source Modelle
+   - Dokumentation: https://huggingface.co/inference-api
+
+5. Ollama - Lokal und Kostenlos
+   - Name: ollama
+   - Basis-URL: http://localhost:11434/api
+   - Modelle: llama2, mistral, neural-chat (lokal installierbar)
+   - Dokumentation: https://ollama.ai
+
+6. LLaMA 2 via Together AI - Kostenlos (mit API-Key)
+   - Name: together-ai
+   - Basis-URL: https://api.together.xyz
+   - Modelle: llama-2-7b, llama-2-13b, llama-2-70b
+   - Dokumentation: https://together.ai
+
+7. OpenRouter - Aggregator für verschiedene Modelle
+   - Name: openrouter
+   - Basis-URL: https://openrouter.ai/api
+   - Modelle: Zugang zu 100+ Modellen
+   - Dokumentation: https://openrouter.ai/docs
+
+8. Replicate - Kostenlos für einfache Tests
+   - Name: replicate
+   - Basis-URL: https://api.replicate.com
+   - Modelle: Verschiedene LLMs und Vision-Modelle
+   - Dokumentation: https://replicate.com/docs
+
+Empfohlene kostenlose Option für Anfänger: Google Generative AI (Gemini) oder lokales Ollama

@@ -41,8 +41,10 @@ app.use("/*", serveStatic({ root: "./static" }));
 
 app.get("/essen", (c: Context) => {
     const rows = db.prepare(`
-    SELECT name, essen
-    FROM dummy;
+    SELECT person.name, essen.essen
+    FROM person
+    JOIN essen ON person.id_lieblingsessen = essen.id
+    ORDER BY essen.essen;
   `).all();
 
     return c.json(rows);

@@ -2,7 +2,7 @@ function holeEssen() {
   let daten;
 
   // fetch("http://essensliste.essens/essen")
-  fetch("/essens")
+  fetch("/lieblinge")
     .then((response) => response.json())
     .then((data) => {
       daten = data;
@@ -14,8 +14,8 @@ function holeEssen() {
           <td>${eintrag.essen}</td>
     </tr>
     `;
-        document.getElementById("tabelle").innerHTML = html;
       });
+      document.getElementById("tabelle").innerHTML = html;
     })
     .catch((error) => {
       console.info("Fehler beim ersten Catch", error);
